@@ -11,6 +11,7 @@
     - [x] Create dynamic container that removes the build and rebuilds every
     time it is run so credentials are never stored in the container.
     - [x] Create static container that stores credentials in the container.
+- [ ] Fix dark theme background not changing colour.
 - [ ] Split things up into separate "presentation" and "presenter mode" windows.
 - [ ] Add a graph to show questions answered vs questions asked over time.
 - [ ] Get the [picker api](https://developers.google.com/picker/docs) working,
