@@ -28,14 +28,14 @@ This design is intentional and was intended for the sake of simplicity and
 performance. However, if there is interest in modifying the architecture to avoid
 the drawbacks outlined above, feel free to open an issue or pull request.
 
-## Running
+## Usage
 
-To get started, rename the [`.env.example`](./.env.example) file to `.env` and fill
-in all fields under the `# Required` heading. You will need to supply a client
-ID and API key for a Google Cloud Platform project with the sheets api in its
-scope, and http://localhost:5000 as both an authorized JavaScript origin and
-redirect URI. Visit https://console.cloud.google.com/apis/credentials to set this
-up.
+To get started, clone the repository and rename or copy the
+[`.env.example`](./.env.example) file to `.env`, then fill in all fields under
+the `# Required` heading. You will need to supply a client ID and API key for a
+Google Cloud Platform project with the Sheets API in its scope, and
+http://localhost:5000 as both an authorized JavaScript origin and redirect URI.
+Visit https://console.cloud.google.com/apis/credentials to set this up.
 
 Please note that the optional `UPDATE_FREQUENCY` environment variable refers to
 the frequency with which the data from the the Google Sheet will be updated, in
@@ -43,6 +43,11 @@ the frequency with which the data from the the Google Sheet will be updated, in
 
 Once you have filled the file out, you should then be ready to go! There are
 currently three methods of running the application, as outlined below.
+
+Also note that once you have the application running, the Spreadsheet ID that
+you must enter to select a spreadsheet is the bold part of the following URL:
+[https://docs.google.com/spreadsheets/d/**1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms**/edit#gid=0](https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0)
+(this example sheet is taken from Google's Sheets API Quickstart tutorial).
 
 ### On the Host OS
 
@@ -53,8 +58,8 @@ git clone https://github.com/mtoohey31/form-questions
 cd form-questions
 ```
 
-Then run the following `npm` commands to install all necessary dependencies,
-build it, and run it:
+Then after filling out the `.env` file as explained above, run the following
+`npm` commands to install all necessary dependencies, build it, and run it:
 
 ```bash
 npm install
@@ -73,59 +78,61 @@ advantages or trade-offs to security in exchange for performance.
 
 If built and run with this method, credentials will need to be mounted when
 the container is run, and the project will be rebuilt each time. This has the
-advantage of storing no credentials inside the container, they will only ever
+advantage of storing no credentials inside an unused container, they will only ever
 be stored in the `.env` file, or inside the container when it is running. This
 also allows you to change environment variables in the config file without having
 to rebuild the entire container, but it comes at the cost of the container running
 `npm run build` every time the container is started. This doesn't take long though
-in the current state of the project.
+in the current size of the project.
 
-To run with this method (assuming you have filled out the `.env` file), clone the
-repository and `cd` into it:
+To run with this method, clone the repository and `cd` into it:
 
 ```bash
 git clone https://github.com/mtoohey31/form-questions
 cd form-questions
 ```
 
-Then build the container using the appropriate Dockerfile:
+Then fill out the `.env` as previously explained and build the container using
+the appropriate Dockerfile:
 
 ```bash
 docker build -f Dockerfile.dynamic -t form-questions .
 ```
 
-And finally, run the container, mounting the `.env` file in the appropriate location:
+Finally, run the container, mounting the `.env` file in the appropriate location:
 
 ```bash
 docker run --rm -d -v $PWD/.env:/app/.env -p 5000:5000 form-questions
 ```
 
-The project will then be available on http://localhost:5000.
+The specific command above assumes that your current working directory is your
+local clone of this repository. The project will then be available on http://localhost:5000.
 
 #### Static Configuration
 
 With this method, the `.env` file is defined before the image is built, and so
 edits to the `.env` file require the container to be rebuilt. In addition, the
-credentials are stored inside the container, which some may consider undesirable.
+credentials are stored inside the container even when it is not running, which
+some may consider undesirable.
 
-The process for running in this way are similar to the previous option, and are as
-follows:
+The process for running in this way is quite similar to the previous option, and
+is as follows:
 
-Assuming you have filled out the `.env` file, clone the repository and `cd` into
-it:
+Clone the repository and `cd` into it:
 
 ```bash
 git clone https://github.com/mtoohey31/form-questions
 cd form-questions
 ```
 
-Then build the container using the appropriate Dockerfile:
+Then fill out the `.env` as previously explained and build the container using
+the appropriate Dockerfile:
 
 ```bash
 docker build -f Dockerfile.static -t form-questions .
 ```
 
-And finally, run the container, mounting the `.env` file in the appropriate location:
+And finally, run the container:
 
 ```bash
 docker run --rm -d -p 5000:5000 form-questions
@@ -133,10 +140,13 @@ docker run --rm -d -p 5000:5000 form-questions
 
 The project will then be available on http://localhost:5000.
 
+Note that you will not need to mount the `.env` using this method as it is built
+into the container.
+
 ## Contributing
 
-If you would like to contribute, run these commands to clone the repo and run it in
-dev mode:
+If you would like to contribute, run these commands to clone the repo and run it
+in dev mode:
 
 ```bash
 git clone https://github.com/mtoohey31/form-questions
@@ -146,6 +156,10 @@ npm run dev
 ```
 
 Any changes written to files should automatically be reloaded and displayed.
+
+Note that if you would like to modify or test anything where you need the
+project to have access to questions from a Google Sheet, you will need
+to fill out the `.env` file as previously explained above.
 
 As mentioned at the start of the `README`, the main thing I'd like to add is
 separate "presentation" and "presenter mode" windows. If you would like to
