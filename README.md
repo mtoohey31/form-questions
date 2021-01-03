@@ -18,15 +18,15 @@ program.
 
 ## Note on Security
 
-This application is built as a single-page [Svelte](https://svelte.dev/) application.
-There is no client/server architecture, and so API credentials are visible in
-the client-side application. This means that this project should not be deployed
-to multiple users as a production service, unless you trust them all with your
-API credentials.
+This application is built as a single-page [Svelte](https://svelte.dev/)
+application. There is no client/server architecture, and so API credentials are
+visible in the client-side application. This means that this project should not
+be deployed to multiple users as a production service, unless you trust them all
+with your API credentials.
 
 This design is intentional and was intended for the sake of simplicity and
-performance. However, if there is interest in modifying the architecture to avoid
-the drawbacks outlined above, feel free to open an issue or pull request.
+performance. However, if there is interest in modifying the architecture to
+avoid the drawbacks outlined above, feel free to open an issue or pull request.
 
 ## Usage
 
@@ -39,7 +39,8 @@ Visit https://console.cloud.google.com/apis/credentials to set this up.
 
 Please note that the optional `UPDATE_FREQUENCY` environment variable refers to
 the frequency with which the data from the the Google Sheet will be updated, in
-**milliseconds**.
+**milliseconds**, and the optional `CURRENT_COLUMN_WIDTH` environment variable
+must be a valid css width value, such as `400px`, if it is specified.
 
 Once you have filled the file out, you should then be ready to go! There are
 currently three methods of running the application, as outlined below.
@@ -78,12 +79,12 @@ advantages or trade-offs to security in exchange for performance.
 
 If built and run with this method, credentials will need to be mounted when
 the container is run, and the project will be rebuilt each time. This has the
-advantage of storing no credentials inside an unused container, they will only ever
-be stored in the `.env` file, or inside the container when it is running. This
-also allows you to change environment variables in the config file without having
-to rebuild the entire container, but it comes at the cost of the container running
-`npm run build` every time the container is started. This doesn't take long though
-in the current size of the project.
+advantage of storing no credentials inside an unused container, they will only
+ever be stored in the `.env` file, or inside the container when it is running.
+This also allows you to change environment variables in the config file without
+having to rebuild the entire container, but it comes at the cost of the
+container running `npm run build` every time the container is started. This
+doesn't take long though in the current size of the project.
 
 To run with this method, clone the repository and `cd` into it:
 
@@ -99,14 +100,16 @@ the appropriate Dockerfile:
 docker build -f Dockerfile.dynamic -t form-questions .
 ```
 
-Finally, run the container, mounting the `.env` file in the appropriate location:
+Finally, run the container, mounting the `.env` file in the appropriate
+location:
 
 ```bash
 docker run --rm -d -v $PWD/.env:/app/.env -p 5000:5000 form-questions
 ```
 
 The specific command above assumes that your current working directory is your
-local clone of this repository. The project will then be available on http://localhost:5000.
+local clone of this repository. The project will then be available on
+http://localhost:5000.
 
 #### Static Configuration
 
@@ -169,6 +172,6 @@ browser and the other to be opened separately, in OBS for example, let me know!
 There is also a list of other changes I would like to make/have made in the
 [TODO.md](./TODO.md) file.
 
-I'm a bit of a Svelte newcomer right now, so if there are better ways to do things
-than the way I have done them, feel free to suggest or contribute a refactor that
-would improve things!
+I'm a bit of a Svelte newcomer right now, so if there are better ways to do
+things than the way I have done them, feel free to suggest or contribute a
+refactor that would improve things!
