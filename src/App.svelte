@@ -358,10 +358,12 @@
             </Col>
         </Row>
         <div class="d-flex justify-center ma-10">
-            {#if questions.length > nextQuestion + 1}
-                <Button class="mr-2" on:click={() => skip()}>Skip</Button>
+            {#if currentQuestion > 0}
+                <Button class="mr-2" on:click={() => previous()}>
+                    Previous
+                </Button>
             {:else}
-                <Button class="mr-2" disabled>Skip</Button>
+                <Button class="mr-2" disabled>Previous</Button>
             {/if}
             {#if questions.length > nextQuestion}
                 <Button class="ml-2 mr-2" on:click={() => answer()}>
@@ -370,12 +372,10 @@
             {:else}
                 <Button class="ml-2 mr-2" disabled>Answer</Button>
             {/if}
-            {#if currentQuestion > 0}
-                <Button class="ml-2" on:click={() => previous()}>
-                    Previous
-                </Button>
+            {#if questions.length > nextQuestion + 1}
+                <Button class="ml-2" on:click={() => skip()}>Skip</Button>
             {:else}
-                <Button class="ml-2" disabled>Previous</Button>
+                <Button class="ml-2" disabled>Skip</Button>
             {/if}
         </div>
         <Footer class="justify-center pa-2" absolute>
