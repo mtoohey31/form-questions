@@ -57,6 +57,10 @@
     }
     let CLIENT_ID = env.CLIENT_ID;
     let API_KEY = env.API_KEY;
+    let CURRENT_COLUMN_STYLE = "";
+    if (typeof env.CURRENT_COLUMN_WIDTH !== "undefined") {
+        CURRENT_COLUMN_STYLE = `width:${env.CURRENT_COLUMN_WIDTH};flex-basis:revert;flex-grow:revert`;
+    }
 
     //API Variables
     let DISCOVERY_DOCS = [
@@ -338,7 +342,7 @@
                 {/if}
             </Col>
             <Divider vertical inset class="ml-4 mr-4" />
-            <Col>
+            <Col style={CURRENT_COLUMN_STYLE}>
                 {#if !currentTransition}
                     <div
                         class="d-flex justify-center mt-4 mb-4"
