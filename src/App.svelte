@@ -52,13 +52,13 @@
         spreadsheetID = env.DEFAULT_SPREADSHEET_ID;
     }
     let UPDATE_FREQUENCY = 30000;
-    if (typeof env.UPDATE_FREQUENCY !== "undefined") {
+    if (typeof env.UPDATE_FREQUENCY !== "undefined" && env.UPDATE_FREQUENCY !== "") {
         UPDATE_FREQUENCY = env.UPDATE_FREQUENCY;
     }
     let CLIENT_ID = env.CLIENT_ID;
     let API_KEY = env.API_KEY;
     let CURRENT_COLUMN_STYLE = "";
-    if (typeof env.CURRENT_COLUMN_WIDTH !== "undefined") {
+    if (typeof env.CURRENT_COLUMN_WIDTH !== "undefined" && env.CURRENT_COLUMN_WIDTH !== "") {
         CURRENT_COLUMN_STYLE = `width:${env.CURRENT_COLUMN_WIDTH};flex-basis:revert;flex-grow:revert`;
     }
 
