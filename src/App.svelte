@@ -52,13 +52,19 @@
         spreadsheetID = env.DEFAULT_SPREADSHEET_ID;
     }
     let UPDATE_FREQUENCY = 30000;
-    if (typeof env.UPDATE_FREQUENCY !== "undefined" && env.UPDATE_FREQUENCY !== "") {
+    if (
+        typeof env.UPDATE_FREQUENCY !== "undefined" &&
+        env.UPDATE_FREQUENCY !== ""
+    ) {
         UPDATE_FREQUENCY = env.UPDATE_FREQUENCY;
     }
     let CLIENT_ID = env.CLIENT_ID;
     let API_KEY = env.API_KEY;
     let CURRENT_COLUMN_STYLE = "";
-    if (typeof env.CURRENT_COLUMN_WIDTH !== "undefined" && env.CURRENT_COLUMN_WIDTH !== "") {
+    if (
+        typeof env.CURRENT_COLUMN_WIDTH !== "undefined" &&
+        env.CURRENT_COLUMN_WIDTH !== ""
+    ) {
         CURRENT_COLUMN_STYLE = `width:${env.CURRENT_COLUMN_WIDTH};flex-basis:revert;flex-grow:revert`;
     }
 
@@ -218,7 +224,8 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <MaterialApp {theme}>
-    <div style="min-height: 100vh; min-width: calc(100vw - 32px); padding: 16px">
+    <div
+        style="min-height: 100vh; min-width: calc(100vw - 32px); padding: 16px">
         <AppBar class="yellow darken-2">
             <span slot="title" class="grey-text text-darken-4">Form Questions</span>
             <div style="flex-grow:1" />
@@ -346,6 +353,42 @@
                                         on:focus={() => (typing = true)}
                                         on:change={() => (typing = false)}
                                         bind:value={questions[nextQuestion].question}>
+                                        Question
+                                    </Textarea>
+                                </div>
+                            </Card>
+                        </div>
+                    {:else if !nextTransition}
+                        <div
+                            class="d-flex flex-column mt-4 mb-4"
+                            transition:fade={{ duration: 200 }}>
+                            <Card class="align-items-stretch">
+                                <TextField
+                                    class="pt-4 pl-4 pr-4 pb-1"
+                                    color="yellow darken-2"
+                                    clearable
+                                    dense
+                                    outlined
+                                    disabled
+                                    counter="26"
+                                    maxlength="26"
+                                    on:focus={() => (typing = true)}
+                                    on:change={() => (typing = false)}>
+                                    Name
+                                </TextField>
+                                <div class="pt-1 pl-4 pr-4 pb-4 flex-shrink-1">
+                                    <Textarea
+                                        color="yellow darken-2"
+                                        clearable
+                                        dense
+                                        outlined
+                                        autogrow
+                                        disabled
+                                        rows={3}
+                                        counter="171"
+                                        maxlength="171"
+                                        on:focus={() => (typing = true)}
+                                        on:change={() => (typing = false)}>
                                         Question
                                     </Textarea>
                                 </div>
