@@ -22,7 +22,9 @@ Please note that the optional `UPDATE_FREQUENCY` environment variable refers to 
 
 Once you have filled the file out, you should then be ready to go! There are currently three methods of running the application, as outlined below.
 
-Also note that once you have the application running, the Spreadsheet ID that you must enter to select a spreadsheet is the bold part of the following URL: [https://docs.google.com/spreadsheets/d/**1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms**/edit#gid=0](https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0) (this example sheet is taken from Google's Sheets API Quickstart tutorial).
+Also note that once you have the application running, the Spreadsheet ID that you must enter to select a spreadsheet is the bold part of the following URL: [https://docs.google.com/spreadsheets/d/**1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms**/edit#gid=0](https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0) (this example sheet is taken from Google's Sheets API Quickstart tutorial). The Google Form connected to this sheet should look like this:
+
+![Google Form Screenshot](./google-form-screenshot.png)
 
 ### On the Host OS
 
