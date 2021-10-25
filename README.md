@@ -6,8 +6,6 @@ The current intended use-case is to screen-share the portion of the window conta
 
 ## Screenshot
 
-![Screenshot](./screenshot.png)
-
 ## Note on Security
 
 This application is built as a single-page [Svelte](https://svelte.dev/) application. There is no client/server architecture, and so API credentials are visible in the client-side application. This means that this project should not be deployed to multiple users as a production service, unless you trust them all with your API credentials.

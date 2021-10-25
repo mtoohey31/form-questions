@@ -1,1 +1,8 @@
-public/build
+.DS_Store
+node_modules
+/.svelte
+/build
+/functions
+/.env
+/Dockerfile
+/Dockerfile.dev

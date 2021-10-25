@@ -1,26 +1,34 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "vite-svelte-tailwindcss-typescript",
+  "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "@rollup/plugin-replace": "^2.3.4",
-    "dotenv": "^8.2.0",
-    "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "svelte": "^3.0.0"
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
+    "@tsconfig/svelte": "^2.0.1",
+    "@types/socket.io-p2p": "^2.2.2",
+    "autoprefixer": "^10.3.3",
+    "path": "^0.12.7",
+    "postcss": "^8.3.6",
+    "prettier": "^2.3.2",
+    "prettier-plugin-svelte": "^2.4.0",
+    "svelte": "^3.37.0",
+    "svelte-check": "^2.1.0",
+    "svelte-preprocess": "^4.8.0",
+    "tailwindcss": "^2.2.8",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.5.1"
   },
   "dependencies": {
-    "@mdi/js": "^5.8.55",
-    "sirv-cli": "^1.0.0",
-    "svelte-materialify": "^0.3.4"
+    "@fontsource/roboto": "^4.5.1",
+    "@fontsource/roboto-mono": "^4.5.0",
+    "@mdi/js": "^6.3.95",
+    "svelte-routing": "^1.6.0"
   }
 }
