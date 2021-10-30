@@ -1,23 +1,23 @@
-import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
-import { resolve } from 'path'
+import { defineConfig } from "vite";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     svelte({
       onwarn: (warning, handler) => {
-        const { code, frame } = warning
+        const { code, frame } = warning;
 
-        if (code === 'css-unused-selector') return
+        if (code === "css-unused-selector") return;
 
-        handler(warning)
+        handler(warning);
       },
     }),
   ],
   resolve: {
     alias: {
-      '/@': resolve('/src'),
+      "/@": resolve("/src"),
     },
   },
-})
+});

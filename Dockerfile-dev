@@ -5,5 +5,4 @@ WORKDIR /usr/src/form-questions
 RUN npm install -g pnpm
 
 EXPOSE 3000
-ENV HOST=0.0.0.0
-ENTRYPOINT ["/bin/sh", "-c", "pnpm install && pnpm run dev -- --host"]
+ENTRYPOINT ["/bin/sh", "-c", "pnpm install && pnpm run dev -- --host 0.0.0.0"]
