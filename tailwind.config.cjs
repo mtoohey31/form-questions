@@ -39,7 +39,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      backgroundColor: ["obs"]
+      backgroundColor: ["obs"],
     },
   },
   plugins: [
@@ -48,7 +48,7 @@ module.exports = {
         modifySelectors(({ className }) => {
           return `.obs .${e(`obs${separator}${className}`)}`;
         });
-      })
-    })
+      });
+    }),
   ],
 };
