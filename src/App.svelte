@@ -7,7 +7,7 @@
 </script>
 
 <div
-  class="bg-gray-100 text-black dark:bg-trueGray-800 dark:text-white h-screen w-screen flex flex-col"
+  class="bg-gray-100 text-black dark:bg-trueGray-800 dark:text-white h-screen w-screen flex flex-col obs:bg-transparent dark:obs:bg-transparent"
 >
   <Router {url}>
     <Route path="/">
