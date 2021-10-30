@@ -33,5 +33,6 @@
       rc.createAnswer().then((answer) => rc.setLocalDescription(answer));
     }}
     closeable={false}
+    refocus="onSubmit"
   />
 {/if}

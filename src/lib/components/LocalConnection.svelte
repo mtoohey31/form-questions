@@ -26,5 +26,6 @@
       connectionVisible = false;
     }}
     instructions
+    refocus="onMouseLeave"
   />
 {/if}
