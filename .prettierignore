@@ -1,0 +1,7 @@
+node_modules
+/.svelte
+/build
+/functions
+.pnpm-debug.log
+/dist
+/pnpm-lock.yaml
