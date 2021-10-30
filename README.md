@@ -22,6 +22,8 @@ cd form-questions
 docker-compose up
 ```
 
+Note that credentials are stored inside the container so you shouldn't push it to Docker Hub or anything like that.
+
 ## Contributing
 
 If you would like to contribute, run these commands to clone the repo and run it in dev mode:
