@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   mode: "jit",
   purge: ["./src/**/*.{js,jsx,ts,tsx,svelte}"],
@@ -37,7 +38,17 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ["obs"]
+    },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addVariant, e }) => {
+      addVariant("obs", ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.obs .${e(`obs${separator}${className}`)}`;
+        });
+      })
+    })
+  ],
 };

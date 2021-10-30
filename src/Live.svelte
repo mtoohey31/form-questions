@@ -3,6 +3,7 @@
   import RemoteConnection from "./lib/components/RemoteConnection.svelte";
   import type { Question, Message } from "./form-questions.js";
   import QuestionBox from "./lib/components/QuestionBox.svelte";
+  import { onMount } from "svelte";
 
   let connectionVisible: boolean;
   let question: Question;
@@ -19,6 +20,14 @@
         break;
     }
   }
+
+  onMount(() => {
+    // NOTE: when modifying OBS styles, comment the surrounding if statement
+    // here to view the live component in OBS mode
+    if (navigator.userAgent.indexOf("OBS") !== -1) {
+      document.getElementById("app").classList.add("obs");
+    }
+  });
 </script>
 
 <Theme bind:darkTheme buttonVisible={false} />
