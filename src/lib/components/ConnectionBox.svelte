@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
+  import TextButton from "./TextButton.svelte";
 
   let offerTextArea: HTMLElement;
   let answerTextArea: HTMLElement;
@@ -62,6 +63,17 @@
       bind:value={offer}
       readonly={editable !== "offer"}
     />
+    {#if editable === "answer"}
+      {#await navigator.clipboard.writeText("") then _}
+        <div class="mt-4" style="direction: rtl;">
+          <TextButton on:click={() => navigator.clipboard.writeText(offer)}
+            >Copy</TextButton
+          >
+        </div>
+      {:catch}
+        Copy the value with <kbd>Ctrl-c</kbd>.
+      {/await}
+    {/if}
     <label for="answer" class="block">Answer</label>
     <textarea
       bind:this={answerTextArea}
@@ -72,7 +84,7 @@
       bind:value={answer}
       readonly={editable !== "answer"}
     />
-    <div class="flex justify-end gap-4 mt-4">
+    <div class="flex justify-end gap-4 mt-4 items-center">
       {#if closeable}
         <button
           class="bg-white hover:shadow-blue transition text-googleBlue shadow-md p-2 border-googleBlue border"
@@ -82,8 +94,20 @@
           >Close
         </button>
       {/if}
-      <button
-        class="bg-googleBlue text-white hover:shadow-blue transition shadow-md p-2 border-googleBlue border"
+      {#if editable === "offer"}
+        {#await navigator.clipboard.writeText("") then _}
+          {#if answer}
+            <TextButton on:click={() => navigator.clipboard.writeText(offer)}
+              >Copy</TextButton
+            >
+          {/if}
+        {:catch}
+          {#if answer}
+            <div>Copy the value with <kbd>Ctrl-c</kbd>.</div>
+          {/if}
+        {/await}
+      {/if}
+      <TextButton
         on:click={() => {
           if (refocus === "onSubmit") {
             answerTextArea.focus();
@@ -91,7 +115,7 @@
           onSubmit();
         }}
         >{submitText}
-      </button>
+      </TextButton>
     </div>
   </div>
 </div>
