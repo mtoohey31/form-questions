@@ -30,7 +30,7 @@
   <!-- TOOD: Fix height -->
   <div
     on:mouseleave={() => {
-      if ((refocus = "onMouseLeave")) answerTextArea.focus();
+      if (refocus == "onMouseLeave") answerTextArea.focus();
     }}
     class="shadow-2xl rounded-lg p-4 bg-white dark:bg-trueGray-800 max-h-3/4"
     style="min-width: 75%;"
