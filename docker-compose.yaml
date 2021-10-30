@@ -3,9 +3,11 @@ version: "3.9"
 services:
   app:
     image: form-questions
-    build: {}
-    environment:
-      GAPI_CLIENT_ID: ${GAPI_CLIENT_ID}
+    build:
+      args:
+        VITE_PUBLIC_BASE_URL: ${PROD_PUBLIC_BASE_URL}
+        VITE_GAPI_API_KEY: ${GAPI_API_KEY}
+        VITE_GAPI_CLIENT_ID: ${GAPI_CLIENT_ID}
+        VITE_GAPI_PROJECT_NUMBER: ${GAPI_PROJECT_NUMBER}
     ports:
-      - 80:3000
-      - 3000:3000
+      - 3000:5000
