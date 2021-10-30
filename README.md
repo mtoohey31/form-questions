@@ -4,6 +4,8 @@ This project aims to provide a simple and clean interface for displaying and res
 
 ## Screenshot
 
+![2021-10-30T01:10:03,873844231-04:00](https://user-images.githubusercontent.com/36740602/139521036-6682cbc3-4721-4336-a9ec-9629d0ebe963.png)
+
 ## Note on Security
 
 This application is built as a single-page [Svelte](https://svelte.dev/) application. There is no client/server architecture, and so API credentials are visible in the client-side application. Make sure you restrict the scope of the API key you're using to be that of your own domain, otherwise it can be extracted and misused.
