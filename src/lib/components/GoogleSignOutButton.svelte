@@ -8,10 +8,15 @@
       oAuthToken = undefined;
       sheetInfo = undefined;
    };
-  import type { SheetInfo } from "../../form-questions.js";
+   import type { SheetInfo } from "../../form-questions.js";
 
    export let oAuthToken: string;
    export let sheetInfo: SheetInfo;
 </script>
 
-<TextButton on:click={window.signOut}>Sign Out</TextButton>
+<TextButton
+   on:click={() => {
+      // @ts-ignore
+      window.signOut();
+   }}>Sign Out</TextButton
+>

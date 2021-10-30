@@ -1,4 +1,5 @@
 <script lang="ts">
+   // @ts-ignore
    window.onSignIn = (googleUser) => {
       oAuthToken = googleUser.getAuthResponse(true).access_token;
    };
