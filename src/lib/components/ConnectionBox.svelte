@@ -1,5 +1,13 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+
+  let offerTextArea: HTMLElement;
+  let answerTextArea: HTMLElement;
+
+  onMount(() => {
+    offerTextArea.focus();
+  });
 
   export let offer: string;
   export let answer: string;
@@ -8,6 +16,7 @@
   export let editable: "offer" | "answer";
   export let closeable = true;
   export let instructions = false;
+  export let refocus: "onMouseLeave" | "onSubmit";
 
   const JSONPlaceholder = "{}";
 
@@ -20,6 +29,9 @@
 >
   <!-- TOOD: Fix height -->
   <div
+    on:mouseleave={() => {
+      if ((refocus = "onMouseLeave")) answerTextArea.focus();
+    }}
     class="shadow-2xl rounded-lg p-4 bg-white dark:bg-trueGray-800 max-h-3/4"
     style="min-width: 75%;"
   >
@@ -42,6 +54,7 @@
     {/if}
     <label for="offer" class="block">Offer</label>
     <textarea
+      bind:this={offerTextArea}
       name="offer"
       id="offer"
       class="block border p-2 w-full dark:bg-trueGray-700 font-mono"
@@ -51,6 +64,7 @@
     />
     <label for="answer" class="block">Answer</label>
     <textarea
+      bind:this={answerTextArea}
       name="answer"
       id="answer"
       class="block border p-2 w-full dark:bg-trueGray-700 font-mono"
@@ -70,7 +84,12 @@
       {/if}
       <button
         class="bg-googleBlue text-white hover:shadow-blue transition shadow-md p-2 border-googleBlue border"
-        on:click={onSubmit}
+        on:click={() => {
+          if (refocus === "onSubmit") {
+            answerTextArea.focus();
+          }
+          onSubmit();
+        }}
         >{submitText}
       </button>
     </div>
