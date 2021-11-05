@@ -12,7 +12,8 @@ This application is built as a single-page [Svelte](https://svelte.dev/) applica
 
 ## Usage
 
-To get started, clone the repository and rename or copy the [`example.env`](example.env) file to `.env`, then fill in all fields. You will need to supply a client ID, an API key, the C for a Google Cloud Platform project with the Sheets API in its scope, and <http://localhost:5000> as both an authorized JavaScript origin and redirect URI. Visit <https://console.cloud.google.com/apis/credentials> to set this up.
+To get started, clone the repository and rename or copy the [`example.env`](example.env) file to `.env`, then fill in all fields. You will need to supply a client ID, an API key, the project ID for a Google Cloud Platform project with the Sheets API in its scope, and <http://localhost> as both an authorized JavaScript origin and redirect URI (you may also need <http://localhost:3000> if you're running the project in development mode
+). Visit <https://console.cloud.google.com/apis/credentials> to set this up.
 
 ### Running via Docker
 
